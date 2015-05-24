@@ -7,10 +7,11 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 # this can't run because it depend on systemd which is not enabled.
 # RUN localectl set-locale LANG=en_US.UTF-8
 RUN yum -y update && yum clean all
+RUN yum -y install epel-release
 RUN yum -y install python-pip gcc python-devel gmp-devel mariadb-devel
+# using tsinghua mirror for pip
 RUN mkdir -p /root/.pip
 COPY pip.conf /root/.pip/pip.conf
-RUN rpm -ql python-pip
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
         sqlalchemy mysql-python pyramid pyramid_webassets
 
