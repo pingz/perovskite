@@ -16,8 +16,9 @@ COPY pip.conf /root/.pip/pip.conf
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
         sqlalchemy mysql-python pyramid pyramid_webassets waitress
 # setup default workspace.
-VOLUME ["/app", ]
-WORKDIR ["/app", ]
-ENTRYPOINT ["pserve", "development.ini", "--reload", ]
+VOLUME ["/app"]
+WORKDIR "/app"
 # default port for devlopement app to run
 EXPOSE 6543
+
+ENTRYPOINT ["pserve", "development.ini", "--reload"]
