@@ -3,4 +3,4 @@
 PRJ_DIR=/app/${PRJN}
 [ -d ${PRJ_DIR} ] || pcreate -s starter ${PRJN}
 cd ${PRJ_DIR}
-pserver development.ini --reload
+pserve development.ini --reload

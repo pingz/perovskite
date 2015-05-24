@@ -37,4 +37,5 @@ WORKDIR "/app"
 # default port for devlopement app to run
 EXPOSE 6543
 COPY start.sh /start.sh
+RUN chmod +x /start.sh
 CMD ["/start.sh"]
