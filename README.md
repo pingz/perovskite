@@ -1,2 +1,0 @@
-# perovskite
-personal dockerfile repo
