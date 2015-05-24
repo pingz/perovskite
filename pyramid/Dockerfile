@@ -10,10 +10,14 @@ RUN yum -y update && yum clean all
 RUN yum -y install epel-release
 RUN yum -y install python-pip gcc python-devel gmp-devel mariadb-devel
 # using tsinghua mirror for pip
+# refer https://wiki.tuna.tsinghua.edu.cn/MirrorUsage/pypi
 RUN mkdir -p /root/.pip
 COPY pip.conf /root/.pip/pip.conf
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
-        sqlalchemy mysql-python pyramid pyramid_webassets
-
+        sqlalchemy mysql-python pyramid pyramid_webassets waitress
+# setup default workspace.
+VOLUME ["/app", ]
+WORKDIR ["/app", ]
+ENTRYPOINT ["pserve", "development.ini", "--reload", ]
 # default port for devlopement app to run
 EXPOSE 6543
