@@ -2,6 +2,7 @@
 # AUTHOR: Zheng, Ping <zp@ping.biz>
 PRJ_DIR=/app/${PRJN}
 if [ -d ${PRJ_DIR} ]; then
+    "do nothing!"
 else
     pcreate -s starter ${PRJN}
 fi
