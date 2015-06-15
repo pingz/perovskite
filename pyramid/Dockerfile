@@ -33,9 +33,10 @@ RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
         MarkupSafe
 # setup default workspace.
 VOLUME ["/app"]
-WORKDIR "/app"
+WORKDIR /app
 # default port for devlopement app to run
 EXPOSE 6543
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
+ENV PRJN                        # project name
 CMD ["/start.sh"]
